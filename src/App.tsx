@@ -1,10 +1,11 @@
 
-import './App.css';
+import { Routes } from './routes/Routes';
+import { Navigation } from './components/navigations/Navigation';
 
 export const App = () => {
-  return (
-    <div className="App">
-    </div>
-  );
-}
-
+	return (
+		<Routes>
+			<Navigation />
+		</Routes>
+	)
+};
