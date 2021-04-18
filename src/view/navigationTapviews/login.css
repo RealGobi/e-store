@@ -1,0 +1,84 @@
+
+.login-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  margin: 5%;
+  width: 400px;
+  height: auto;
+  background:rgba(196, 196, 197, 0.927);
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px grey;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:90px 50px 50px 90px;
+  grid-template-areas: 
+  "title title"
+  "text-name input-name"
+  "text-password input-password"
+  "button button"
+  ;
+}
+
+.title {
+  grid-area: title;
+}
+
+.text-name {
+  grid-area: text-name;
+}
+
+.text-password {
+  grid-area: text-password;
+}
+
+.input-name {
+  grid-area: input-name;
+  display: flex;
+  align-items: center;
+}
+
+.input-password {
+  grid-area: input-password;
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  grid-area: button;
+}
+
+.button button {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.title, .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-name, .text-password {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  font-size: 1.2rem;
+
+}
+
+.input-name input[type=text], .input-password input[type=password] {
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 18px;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 3px  rgb(83, 93, 250);
+}

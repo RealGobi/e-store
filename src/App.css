@@ -3,3 +3,18 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: rgb(241, 241, 241);
+  color:rgb(8, 8, 8);
+}
+
+.dark {
+  background-color: rgb(87, 86, 86);
+  color: rgb(224, 221, 221);
+}
+
+.dark-nav {
+  background-color: rgb(20, 19, 19);
+  color: rgb(224, 220, 220);
+}

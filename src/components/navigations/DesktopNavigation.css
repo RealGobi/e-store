@@ -16,6 +16,7 @@
 
 #login {
 position: absolute;
+top:10px;
 left: 10px;
 font-size: 1rem;
 }
@@ -32,6 +33,7 @@ right: 10px;
 .navigation-wrapper li:hover {
   background-color: #000;
   color: #fff;
+  border-radius: 8px;
 }
 
 img {
