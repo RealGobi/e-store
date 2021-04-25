@@ -1,6 +1,7 @@
   
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { authNeeded, blockeRouteIfAuth } from '../shared/function/functions';
 import { ModeContext } from '../shared/provider/ModeProvider';
 import { UserContext } from '../shared/provider/UserProvider';
 import { HomeView } from '../view/HomeView';
@@ -28,28 +29,18 @@ export const Routes = (props: { children?: React.ReactChild }) => {
 			}
 	},[setAuth, setChecked]);
 
-
-	const blockeRouteIfAuth = (navToViewIfAuth: React.FC) => {
- 		return auth ? HomeView : navToViewIfAuth;
-	};
-
-	const authNeeded = (navToViewIfAuth: React.FC) => {
- 		return auth ? navToViewIfAuth : LoginView;
-	};
-
-	
 	return (
 		<BrowserRouter>
 			{children}
 			<Switch>
-				<Route exact path={RoutingPath.LoginView} component={blockeRouteIfAuth(LoginView)} />
-				<Route exact path={RoutingPath.NewsView} component={NewsView} />
-				<Route exact path={RoutingPath.GalleryView} component={GalleryView} />
-				<Route exact path={RoutingPath.ShopView} component={ShopView} />
-				<Route exact path={RoutingPath.ProfileView} component={authNeeded(ProfileView)} />
-				<Route exact path={RoutingPath.SavedView} component={authNeeded(SavedView)} />
-				<Route exact path={RoutingPath.SettingView} component={authNeeded(SettingView)} />
-				<Route component={HomeView} />
+				<Route exact path={RoutingPath.LoginView} component={blockeRouteIfAuth(auth, HomeView, LoginView)} />
+				<Route exact path={RoutingPath.NewsView} component={authNeeded(auth, LoginView, NewsView)} />
+				<Route exact path={RoutingPath.GalleryView} component={authNeeded(auth, LoginView, GalleryView)} />
+				<Route exact path={RoutingPath.ShopView} component={authNeeded(auth, LoginView, ShopView)} />
+				<Route exact path={RoutingPath.ProfileView} component={authNeeded(auth, LoginView, ProfileView)} />
+				<Route exact path={RoutingPath.SavedView} component={authNeeded(auth, LoginView, SavedView)} />
+				<Route exact path={RoutingPath.SettingView} component={authNeeded(auth, LoginView, SettingView)} />
+				<Route component={authNeeded(auth, LoginView, HomeView)} />
 			</Switch>
 		</BrowserRouter>
 	)

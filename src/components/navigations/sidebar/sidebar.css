@@ -1,0 +1,32 @@
+
+.side-drawer {
+  height: 100vh;
+  background-color: rgb(137, 146, 137);
+  box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.658);
+  position: fixed;
+  top:0;
+  left:0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 400ms ease-in-out;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+nav ul {
+  margin-top: 75px;
+}
+
+nav ul li {
+  margin:15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-family: 'Rubik', sans-serif;
+  border-bottom: 1px solid #000;
+  list-style: none;
+  padding: 1.5rem;
+}
