@@ -1,15 +1,41 @@
-import { useContext } from "react";
-import { PlanetsContext } from "../../shared/provider/PlanetsProvider";
+import { useState, useEffect } from 'react';
+import PokemonService from "../../shared/api/service/PokemonService";
+
 
 export const PlanetsView = () => {
-  const [planets, ] = useContext(PlanetsContext);
+  const [state, setstate] = useState([]);
+const [loading, setLoading] = useState(true);
+  const fetchData = async () => {
+    try {
+      const { data } = await PokemonService.get100Poke();
+      setstate(data.results);
+      setLoading(false);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  };
+  
+  console.log(state);
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData();
+    }, 1000);
+  }, [])
+  
+  const displayData = () => {
+   return state.map((s:any,idx: number) => { 
+      return <div key={idx}><h1>{s.name}</h1></div>
+    })}
+  
+    const spinner = () => {
+      return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+    };
 
   return (
-    <div>
-      <h1>Planets view</h1>
-      {planets && planets.map((p: any, i: number) => {
-        return <div key={i}>{p.name}</div>
-      })}
-    </div>
+    <>
+      {loading? spinner() : displayData() }
+    </>
   )
 }

@@ -1,20 +1,40 @@
-import { useContext } from 'react';
-import { StarShipContext } from '../../shared/provider/StarShipApiProvider';
+import { useState, useEffect } from 'react';
+import { useDebounce } from '../../shared/hooks/useDebounce';
+import PokemonService from "../../shared/api/service/PokemonService";
 
 export const ShopView = () => {
-  const [starShips, setStarShips] = useContext(StarShipContext);
 
+  const [search, setSearch] = useState<string>('');
+  const [resultOfSearch, setResultOfSearch] = useState<any>('');
+  const debounceTerm = useDebounce(search, 1000)
+
+  const fetchData = async (x:string) => {
+    if (debounceTerm) {
+      try {
+        const res = await PokemonService.searchPokemon(x);
+        setResultOfSearch(res.data);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchData(search);
+  }, [debounceTerm])
+  
   return (
     <div className="container">
-          {starShips && starShips.map((s: any, idx: number) => {
-         return ( <div className="ship-card" key={idx}>
-                      <h1 className="header">{s.name} <hr/> </h1> 
-                      <p className="class">Klass: {s.starship_class}</p>
-                      <p className="kind">Modell {s.model}</p>
-                      <p className="price">Pris: {s.cost_in_credits} credits</p>
-                      <p className="manu">Tillverkare: {s.manufacturer}</p>
-                      <p className="crew">Bestättnings: {s.crew}st</p>
-                </div>)})}
+      <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/>
+      <button onClick={()=>fetchData(search)}>Search</button>
+      {
+        resultOfSearch && 
+      <div>
+        <h1>Name: {resultOfSearch.name}</h1>
+        <p>Height: {resultOfSearch.height}</p>
+      </div>
+      }
     </div>
   )
 }

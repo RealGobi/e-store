@@ -18,3 +18,85 @@ body {
   background-color: rgb(20, 19, 19);
   color: rgb(224, 220, 220);
 }
+
+.main-form {
+  border-radius: 8px;
+  margin: 0 auto;
+  width: 700px;
+  height: 300px;
+  background-color: rgb(98, 124, 111);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "name category price"
+  "description description description"
+  "submit submit submit"
+  ;
+}
+
+.main-form input, .main-form textarea, .main-form select {
+  width: 200px;
+  height: 35px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+.main-form textarea {
+  font-size: .8rem;
+  height: 75px;
+  width: 650px;
+}
+
+
+.name-j {
+  grid-area: name;
+display: flex;
+justify-content: center;
+margin-top: 25px;
+}
+
+.category-j {
+  grid-area: category;
+  margin-top: 25px;
+  display: flex;
+justify-content: center;
+}
+
+.price-j {
+  grid-area: price;
+margin-top: 25px;
+display: flex;
+justify-content: center;
+}
+
+.description-j {
+  grid-area: description;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-j {
+  grid-area: submit;
+  margin: 0 auto;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: black;
+  color: white;
+}
+
+.card-data {
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  background-color: rgb(158, 155, 156);
+  margin: 10px;
+  padding: 10px
+}

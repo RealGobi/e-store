@@ -17,7 +17,7 @@ export const App = () => {
     }
   );
 	return (
-		<div className={theme}>
+		<div style={{paddingBottom:'10px'}} className={theme}>
 			<UserProvider>
 				<StarShipProvider>
 					<PlanetsProvider>
