@@ -15,14 +15,14 @@ export const ProfileView = () => {
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    let item = {
+    let newItem = {
       itemName,
       itemCategory,
       itemPrice,
       itemDescription
     }
 
-    await backend_service.createItem(item)
+    await backend_service.createItem(newItem)
     .then(() => console.log('Item Created'))
     .then(() => setSend(true))
     .catch(err => {
@@ -44,14 +44,14 @@ export const ProfileView = () => {
         <div className="name-j">
           <label>
             Name: <br />
-            <input required type="text" name="itemName" value={itemName} onChange={(e) => setItemName(e.target.value) } />
+            <input required minLength={2} type="text" name="itemName" value={itemName} onChange={(e) => setItemName(e.target.value) } />
           </label>
         </div>
         <div className="category-j">
           <label>
             Kategori: <br />
           <select required name="itemCategory" value={itemCategory} onChange={(e) => setItemCategory(e.target.value) } >
-              <option >Välj...</option>
+              <option value="">Välj...</option>
               <option value="flower">Blommor</option>
               <option value="fruit">Frukt</option>
               <option value="toy">Leksaker</option>

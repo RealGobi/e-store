@@ -39,10 +39,8 @@ const fetchData = async () => {
             <p>Beskrivning: {data.itemDescription}</p>
             <p>Pris: {data.itemPrice}kr</p>
           </div>
-
         )
       })}
-
     </div>
   )
 }

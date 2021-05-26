@@ -7,6 +7,7 @@
 body {
   background-color: rgb(241, 241, 241);
   color:rgb(8, 8, 8);
+  height: 100%;
 }
 
 .dark {
@@ -100,3 +101,4 @@ input[type=submit]:hover {
   margin: 10px;
   padding: 10px
 }
+
